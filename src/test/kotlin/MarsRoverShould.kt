@@ -4,6 +4,6 @@ import org.junit.jupiter.api.Test
 class MarsRoverShould {
     @Test
     fun example() {
-        true `should be equal to` false
+        true `should be equal to` true
     }
 }
