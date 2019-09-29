@@ -3,8 +3,8 @@ class MarsRover(grid: Grid) {
     var y: Int = 0
     var x: Int = 0
 
-    fun execute(command: String): String {
-        if (command.isNotEmpty()) {
+    fun execute(commands: String): String {
+        for (command in commands) {
             y++
         }
         return formattedPosition()
