@@ -5,6 +5,7 @@ class MarsRover(grid: Grid) {
 
     fun execute(commands: String): String {
         for (command in commands) {
+            if (y == 9) y = 0
             y++
         }
         return formattedPosition()
