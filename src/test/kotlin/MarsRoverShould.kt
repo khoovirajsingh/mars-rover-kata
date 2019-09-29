@@ -3,8 +3,6 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.CsvSource
 
-private const val EMPTY_COMMAND = ""
-
 class MarsRoverShould {
     lateinit var grid: Grid
     lateinit var marsRover: MarsRover
@@ -20,12 +18,26 @@ class MarsRoverShould {
             "0, 0, N, '0:0:N'",
             "5, 6, W, '5:6:W'"
     )
-    fun `stay at the same position given an empty command`(x: Int, y: Int, cardinal: String, expectedPosition:String) {
+    fun `stay at the same position given an empty command`(x: Int, y: Int, cardinal: String, expectedPosition: String) {
         marsRover.x = x
         marsRover.y = y
         marsRover.cardinal = cardinal
 
-        val actualPosition = marsRover.execute(EMPTY_COMMAND)
+        val actualPosition = marsRover.execute("")
+
+        actualPosition `should be equal to` expectedPosition
+    }
+
+    @ParameterizedTest
+    @CsvSource(
+            "0, 0, N, M, '0:1:N'"
+    )
+    fun move(x: Int, y: Int, cardinal: String, command: String, expectedPosition: String) {
+        marsRover.x = x
+        marsRover.y = y
+        marsRover.cardinal = cardinal
+
+        val actualPosition = marsRover.execute(command)
 
         actualPosition `should be equal to` expectedPosition
     }

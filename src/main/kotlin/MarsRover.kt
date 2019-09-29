@@ -4,6 +4,11 @@ class MarsRover(grid: Grid) {
     var x: Int = 0
 
     fun execute(command: String): String {
-        return "$x:$y:$cardinal"
+        if (command.isNotEmpty()) {
+            y++
+        }
+        return formattedPosition()
     }
+
+    private fun formattedPosition() = "$x:$y:$cardinal"
 }
