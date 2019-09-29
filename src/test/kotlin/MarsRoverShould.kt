@@ -3,7 +3,10 @@ import org.junit.jupiter.api.Test
 
 class MarsRoverShould {
     @Test
-    fun example() {
-        true `should be equal to` true
+    fun move() {
+        val grid = Grid()
+        val marsRover = MarsRover(grid)
+        val position = marsRover.execute("")
+        position `should be equal to` "0:0:N"
     }
 }
