@@ -1,5 +1,6 @@
 private const val NORTH = "N"
 private const val EAST = "E"
+private const val SOUTH = "S"
 
 class MarsRover(val grid: Grid) {
     var cardinal: String = NORTH
@@ -10,9 +11,16 @@ class MarsRover(val grid: Grid) {
         for (command in commands) {
             if (isNorthFacing()) moveNorth()
             if (isEastFacing()) moveEast()
+            if (isSouthFacing()) moveSouth()
         }
         return formattedPosition()
     }
+
+    private fun moveSouth() {
+        y--
+    }
+
+    private fun isSouthFacing() = cardinal == SOUTH
 
     private fun isNorthFacing() = cardinal == NORTH
 
