@@ -10,37 +10,31 @@ class MarsRover(val grid: Grid) {
 
     fun execute(commands: String): String {
         for (command in commands) {
-            if (isNorthFacing()) moveNorth()
-            if (isEastFacing()) moveEast()
-            if (isSouthFacing()) moveSouth()
-            if (isWestFacing()) moveWest()
+            if (facing(NORTH)) moveNorth()
+            if (facing(EAST)) moveEast()
+            if (facing(SOUTH)) moveSouth()
+            if (facing(WEST)) moveWest()
         }
         return formattedPosition()
     }
+
+    private fun facing(direction: String) = cardinal == direction
 
     private fun moveWest() {
         if (x.isUnderBoundary()) x = SIZE - 1 else x--
     }
 
-    private fun isNorthFacing() = cardinal == NORTH
-
     private fun moveNorth() {
         if (y.isOverBoundary()) y = 0 else y++
     }
-
-    private fun isEastFacing() = cardinal == EAST
 
     private fun moveEast() {
         if (x.isOverBoundary()) x = 0 else x++
     }
 
-    private fun isSouthFacing() = cardinal == SOUTH
-
     private fun moveSouth() {
         if (y.isUnderBoundary()) y = SIZE - 1 else y--
     }
-
-    private fun isWestFacing() = cardinal == WEST
 
     private fun formattedPosition() = "$x:$y:$cardinal"
 }
