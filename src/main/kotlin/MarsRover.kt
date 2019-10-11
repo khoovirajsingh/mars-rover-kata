@@ -23,7 +23,7 @@ class MarsRover(val grid: Grid) {
     private fun isEastFacing() = cardinal == EAST
 
     private fun moveEast() {
-        x++
+        if (x.isAtEdge()) x = 0 else x++
     }
 
     private fun formattedPosition() = "$x:$y:$cardinal"
