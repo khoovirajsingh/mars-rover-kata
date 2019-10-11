@@ -17,7 +17,7 @@ class MarsRover(val grid: Grid) {
     }
 
     private fun moveSouth() {
-        y--
+        if (y <= 0) y = 9 else y--
     }
 
     private fun isSouthFacing() = cardinal == SOUTH
