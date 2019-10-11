@@ -32,8 +32,9 @@ class MarsRoverShould {
     @CsvSource(
             "0, 0, N, M, '0:1:N'",
             "0, 0, N, MM, '0:2:N'",
-            "0, 0, N, MMMMMMMMMM, '0:1:N'"
-    )
+            "0, 0, N, MMMMMMMMMM, '0:0:N'",
+            "0, 0, N, MMMMMMMMMMM, '0:1:N'"
+        )
     fun move(x: Int, y: Int, cardinal: String, command: String, expectedPosition: String) {
         marsRover.x = x
         marsRover.y = y
