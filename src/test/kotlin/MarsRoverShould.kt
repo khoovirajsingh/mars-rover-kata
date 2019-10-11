@@ -37,7 +37,8 @@ class MarsRoverShould {
         "0, 0, E, M, '1:0:E'",
         "0, 0, E, MMMMMMMMMMM, '1:0:E'",
         "0, 9, S, M, '0:8:S'",
-        "0, 0, S, M, '0:9:S'"
+        "0, 0, S, M, '0:9:S'",
+        "9, 0, W, M, '8:0:W'"
     )
     fun move(x: Int, y: Int, cardinal: String, command: String, expectedPosition: String) {
         marsRover.x = x
