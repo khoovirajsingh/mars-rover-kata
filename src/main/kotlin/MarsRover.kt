@@ -19,7 +19,7 @@ class MarsRover(val grid: Grid) {
     }
 
     private fun moveWest() {
-        x--
+        if (x.isUnderBoundary()) x = SIZE - 1 else x--
     }
 
     private fun isNorthFacing() = cardinal == NORTH
