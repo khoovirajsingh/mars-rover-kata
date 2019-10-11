@@ -15,8 +15,8 @@ class MarsRoverShould {
 
     @ParameterizedTest
     @CsvSource(
-            "0, 0, N, '0:0:N'",
-            "5, 6, W, '5:6:W'"
+        "0, 0, N, '0:0:N'",
+        "5, 6, W, '5:6:W'"
     )
     fun `stay at the same position given an empty command`(x: Int, y: Int, cardinal: String, expectedPosition: String) {
         marsRover.x = x
@@ -30,11 +30,12 @@ class MarsRoverShould {
 
     @ParameterizedTest
     @CsvSource(
-            "0, 0, N, M, '0:1:N'",
-            "0, 0, N, MM, '0:2:N'",
-            "0, 0, N, MMMMMMMMMM, '0:0:N'",
-            "0, 0, N, MMMMMMMMMMM, '0:1:N'"
-        )
+        "0, 0, N, M, '0:1:N'",
+        "0, 0, N, MM, '0:2:N'",
+        "0, 0, N, MMMMMMMMMM, '0:0:N'",
+        "0, 0, N, MMMMMMMMMMM, '0:1:N'",
+        "0, 0, E, M, '1:0:E'"
+    )
     fun move(x: Int, y: Int, cardinal: String, command: String, expectedPosition: String) {
         marsRover.x = x
         marsRover.y = y

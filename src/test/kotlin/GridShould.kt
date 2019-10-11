@@ -3,7 +3,7 @@ import org.junit.jupiter.api.Test
 
 class GridShould {
     @Test
-    fun `validate if position is outside of grid boundary`() {
-        10.isWithinGrid() `should be equal to` true
+    fun `validate if position is at edge grid boundary`() {
+        9.isAtEdge() `should be equal to` true
     }
 }
