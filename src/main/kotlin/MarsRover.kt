@@ -40,6 +40,7 @@ class MarsRover(val grid: Grid, var position: Position) {
     private fun isRotateRight(command: Char) = command == ROTATE_RIGHT
 
     private fun rotateRight() {
-        position.direction = EAST
+        if (facing(NORTH)) position.direction = EAST
+        else if (facing(EAST)) position.direction = SOUTH
     }
 }

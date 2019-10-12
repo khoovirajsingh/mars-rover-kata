@@ -36,7 +36,8 @@ class MarsRoverShould {
 
     @ParameterizedTest
     @CsvSource(
-        "0, 0, N, R, '0:0:E'"
+        "0, 0, N, R, '0:0:E'",
+        "0, 0, N, RR, '0:0:S'"
     )
     fun rotate(x: Int, y: Int, direction: String, command: String, expectedPosition: String) {
         marsRover = MarsRover(grid, Position(x, y, direction))
