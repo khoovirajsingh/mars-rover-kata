@@ -2,15 +2,13 @@ class MarsRover(val grid: Grid, val position: Position) {
 
     fun execute(commands: String): String {
         for (command in commands) {
-            if (facing(NORTH)) moveNorth()
-            if (facing(EAST)) moveEast()
-            if (facing(SOUTH)) moveSouth()
-            if (facing(WEST)) moveWest()
+            if (position.facing(NORTH)) moveNorth()
+            if (position.facing(EAST)) moveEast()
+            if (position.facing(SOUTH)) moveSouth()
+            if (position.facing(WEST)) moveWest()
         }
         return position.toString()
     }
-
-    private fun facing(direction: String) = position.direction == direction
 
     private fun moveWest() {
         if (position.x.isUnderBoundary()) position.x = SIZE - 1 else position.x--
@@ -27,5 +25,4 @@ class MarsRover(val grid: Grid, val position: Position) {
     private fun moveSouth() {
         if (position.y.isUnderBoundary()) position.y = SIZE - 1 else position.y--
     }
-
 }
