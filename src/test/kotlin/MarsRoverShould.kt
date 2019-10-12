@@ -39,7 +39,11 @@ class MarsRoverShould {
         "0, 0, N, R, '0:0:E'",
         "0, 0, N, RR, '0:0:S'",
         "0, 0, N, RRR, '0:0:W'",
-        "0, 0, N, RRRR, '0:0:N'"
+        "0, 0, N, RRRR, '0:0:N'",
+        "0, 0, N, L, '0:0:W'",
+        "0, 0, N, LL, '0:0:S'",
+        "0, 0, N, LLL, '0:0:E'",
+        "0, 0, N, LLLL, '0:0:N'"
     )
     fun rotate(x: Int, y: Int, direction: String, command: String, expectedPosition: String) {
         marsRover = MarsRover(grid, Position(x, y, direction))
