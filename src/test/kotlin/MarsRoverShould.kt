@@ -10,7 +10,7 @@ class MarsRoverShould {
     @BeforeEach
     fun setUp() {
         grid = Grid()
-        marsRover = MarsRover(grid)
+        marsRover = MarsRover(grid, Position())
     }
 
     @ParameterizedTest
@@ -18,10 +18,10 @@ class MarsRoverShould {
         "0, 0, N, '0:0:N'",
         "5, 6, W, '5:6:W'"
     )
-    fun `stay at the same position given an empty command`(x: Int, y: Int, cardinal: String, expectedPosition: String) {
-        marsRover.x = x
-        marsRover.y = y
-        marsRover.cardinal = cardinal
+    fun `stay at the same position given an empty command`(x: Int, y: Int, direction: String, expectedPosition: String) {
+        marsRover.position.x = x
+        marsRover.position.y = y
+        marsRover.position.direction = direction
 
         val actualPosition = marsRover.execute("")
 
@@ -41,10 +41,10 @@ class MarsRoverShould {
         "9, 0, W, M, '8:0:W'",
         "0, 0, W, M, '9:0:W'"
     )
-    fun move(x: Int, y: Int, cardinal: String, command: String, expectedPosition: String) {
-        marsRover.x = x
-        marsRover.y = y
-        marsRover.cardinal = cardinal
+    fun move(x: Int, y: Int, direction: String, command: String, expectedPosition: String) {
+        marsRover.position.x = x
+        marsRover.position.y = y
+        marsRover.position.direction = direction
 
         val actualPosition = marsRover.execute(command)
 

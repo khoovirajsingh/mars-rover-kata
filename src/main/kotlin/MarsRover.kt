@@ -1,12 +1,4 @@
-private const val NORTH = "N"
-private const val EAST = "E"
-private const val SOUTH = "S"
-private const val WEST = "W"
-
-class MarsRover(val grid: Grid) {
-    var cardinal: String = NORTH
-    var y: Int = 0
-    var x: Int = 0
+class MarsRover(val grid: Grid, val position: Position) {
 
     fun execute(commands: String): String {
         for (command in commands) {
@@ -18,23 +10,23 @@ class MarsRover(val grid: Grid) {
         return formattedPosition()
     }
 
-    private fun facing(direction: String) = cardinal == direction
+    private fun facing(direction: String) = position.direction == direction
 
     private fun moveWest() {
-        if (x.isUnderBoundary()) x = SIZE - 1 else x--
+        if (position.x.isUnderBoundary()) position.x = SIZE - 1 else position.x--
     }
 
     private fun moveNorth() {
-        if (y.isOverBoundary()) y = 0 else y++
+        if (position.y.isOverBoundary()) position.y = 0 else position.y++
     }
 
     private fun moveEast() {
-        if (x.isOverBoundary()) x = 0 else x++
+        if (position.x.isOverBoundary()) position.x = 0 else position.x++
     }
 
     private fun moveSouth() {
-        if (y.isUnderBoundary()) y = SIZE - 1 else y--
+        if (position.y.isUnderBoundary()) position.y = SIZE - 1 else position.y--
     }
 
-    private fun formattedPosition() = "$x:$y:$cardinal"
+    private fun formattedPosition() = "${position.x}:${position.y}:${position.direction}"
 }
