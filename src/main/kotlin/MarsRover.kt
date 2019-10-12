@@ -1,13 +1,20 @@
+private const val MOVE = 'M'
 class MarsRover(val grid: Grid, val position: Position) {
 
     fun execute(commands: String): String {
         for (command in commands) {
-            if (position.facing(NORTH)) moveNorth()
-            if (position.facing(EAST)) moveEast()
-            if (position.facing(SOUTH)) moveSouth()
-            if (position.facing(WEST)) moveWest()
+            if (isMove(command)) move()
         }
         return position.toString()
+    }
+
+    private fun isMove(command: Char) = command == MOVE
+
+    private fun move() {
+        if (position.facing(NORTH)) moveNorth()
+        if (position.facing(EAST)) moveEast()
+        if (position.facing(SOUTH)) moveSouth()
+        if (position.facing(WEST)) moveWest()
     }
 
     private fun moveWest() {
