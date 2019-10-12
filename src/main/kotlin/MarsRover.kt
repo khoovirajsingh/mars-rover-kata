@@ -1,10 +1,11 @@
 private const val MOVE = 'M'
+private const val ROTATE_RIGHT = 'R'
 class MarsRover(val grid: Grid, var position: Position) {
 
     fun execute(commands: String): String {
         for (command in commands) {
             if (isMove(command)) move()
-            if (command == 'R') position.direction = "E"
+            if (isRotateRight(command)) rotateRight()
         }
         return position.toString()
     }
@@ -34,5 +35,11 @@ class MarsRover(val grid: Grid, var position: Position) {
 
     private fun moveWest() {
         if (position.x.isUnderBoundary()) position.x = SIZE - 1 else position.x--
+    }
+
+    private fun isRotateRight(command: Char) = command == ROTATE_RIGHT
+
+    private fun rotateRight() {
+        position.direction = EAST
     }
 }
