@@ -33,4 +33,16 @@ class MarsRoverShould {
 
         actualPosition `should be equal to` expectedPosition
     }
+
+    @ParameterizedTest
+    @CsvSource(
+        "0, 0, N, R, '0:0:E'"
+    )
+    fun rotate(x: Int, y: Int, direction: String, command: String, expectedPosition: String) {
+        marsRover = MarsRover(grid, Position(x, y, direction))
+
+        val actualPosition = marsRover.execute(command)
+
+        actualPosition `should be equal to` expectedPosition
+    }
 }
