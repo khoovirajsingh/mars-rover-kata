@@ -7,7 +7,7 @@ class MarsRover(val grid: Grid, val position: Position) {
             if (facing(SOUTH)) moveSouth()
             if (facing(WEST)) moveWest()
         }
-        return formattedPosition()
+        return position.toString()
     }
 
     private fun facing(direction: String) = position.direction == direction
@@ -28,5 +28,4 @@ class MarsRover(val grid: Grid, val position: Position) {
         if (position.y.isUnderBoundary()) position.y = SIZE - 1 else position.y--
     }
 
-    private fun formattedPosition() = "${position.x}:${position.y}:${position.direction}"
 }
