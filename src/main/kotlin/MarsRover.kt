@@ -16,10 +16,10 @@ class MarsRover(val grid: Grid, var position: Position) {
     private fun isMove(command: Char) = command == MOVE
 
     private fun move() {
-        if (facing(NORTH)) position.moveNorth()
-        if (facing(EAST)) position.moveEast()
-        if (facing(SOUTH)) position.moveSouth()
-        if (facing(WEST)) position.moveWest()
+        if (facing(NORTH)) position = position.moveNorth()
+        if (facing(EAST)) position = position.moveEast()
+        if (facing(SOUTH)) position = position.moveSouth()
+        if (facing(WEST)) position = position.moveWest()
     }
 
     private fun facing(direction: String) = position.facing(direction)
