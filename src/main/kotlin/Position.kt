@@ -3,7 +3,7 @@ const val EAST = "E"
 const val SOUTH = "S"
 const val WEST = "W"
 
-data class Position(var x: Int = 0, var y: Int = 0, var direction: String = NORTH) {
+data class Position(val x: Int = 0, val y: Int = 0, val direction: String = NORTH) {
 
     fun move(): Position {
         if (facing(NORTH)) return moveNorth()
@@ -36,23 +36,23 @@ data class Position(var x: Int = 0, var y: Int = 0, var direction: String = NORT
     private fun facing(cardinal: String) = cardinal == direction
 
     private fun moveNorth(): Position {
-        if (y.isOverBoundary()) y = 0 else y++
-        return Position(x, y, direction)
+        val nextY = if (y.isOverBoundary()) 0 else y + 1
+        return Position(x, nextY, direction)
     }
 
     private fun moveSouth(): Position {
-        if (y.isUnderBoundary()) y = SIZE - 1 else y--
-        return Position(x, y, direction)
+        val nextY = if (y.isUnderBoundary()) SIZE - 1 else y - 1
+        return Position(x, nextY, direction)
     }
 
     private fun moveEast(): Position {
-        if (x.isOverBoundary()) x = 0 else x++
-        return Position(x, y, direction)
+        val nextX = if (x.isOverBoundary()) 0 else x + 1
+        return Position(nextX, y, direction)
     }
 
     private fun moveWest(): Position {
-        if (x.isUnderBoundary()) x = SIZE - 1 else x--
-        return Position(x, y, direction)
+        val nextX = if (x.isUnderBoundary()) SIZE - 1 else x - 1
+        return Position(nextX, y, direction)
     }
 
     override fun toString() = "${x}:${y}:${direction}"
