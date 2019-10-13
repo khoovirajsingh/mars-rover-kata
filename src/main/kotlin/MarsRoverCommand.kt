@@ -2,7 +2,7 @@ private const val MOVE = 'M'
 private const val ROTATE_RIGHT = 'R'
 private const val ROTATE_LEFT = 'L'
 
-class MarsRoverCommand(val grid: Grid, private var rover: Rover) {
+class MarsRoverCommand(val grid: Grid, private var rover: MarsRover) {
 
     fun execute(commands: String): String {
         for (command in commands) {

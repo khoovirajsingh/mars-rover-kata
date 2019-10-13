@@ -27,7 +27,7 @@ class MarsRoverCommandShould {
         "0, 0, W, M, '9:0:W'"
     )
     fun move(x: Int, y: Int, direction: String, command: String, expectedPosition: String) {
-        marsRoverCommand = MarsRoverCommand(grid, Rover(x, y, direction))
+        marsRoverCommand = MarsRoverCommand(grid, createMarsRover(x, y, direction))
 
         val actualPosition = marsRoverCommand.execute(command)
 
@@ -47,10 +47,20 @@ class MarsRoverCommandShould {
         "0, 0, N, MRMLMM, '1:3:N'"
     )
     fun rotate(x: Int, y: Int, direction: String, command: String, expectedPosition: String) {
-        marsRoverCommand = MarsRoverCommand(grid, Rover(x, y, direction))
+        marsRoverCommand = MarsRoverCommand(grid, createMarsRover(x, y, direction))
 
         val actualPosition = marsRoverCommand.execute(command)
 
         actualPosition `should be equal to` expectedPosition
+    }
+
+    private fun createMarsRover(x: Int, y: Int, direction: String): MarsRover {
+        return when(direction) {
+            "N" -> RoverFacingNorth(x, y, direction)
+            "W" -> RoverFacingWest(x, y, direction)
+            "S" -> RoverFacingSouth(x, y, direction)
+            "E" -> RoverFacingEast(x, y, direction)
+            else -> RoverFacingNorth(x, y, direction)
+        }
     }
 }
