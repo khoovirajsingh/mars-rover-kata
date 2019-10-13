@@ -1,14 +1,11 @@
-const val NORTH = "N"
-const val EAST = "E"
-const val SOUTH = "S"
-const val WEST = "W"
+import command.createCommand
+import rover.Rover
 
-abstract class MarsRover(open val x: Int = 0, open val y: Int = 0, open val direction: String = NORTH) {
-    abstract fun move(): MarsRover
-
-    abstract fun rotateRight(): MarsRover
-
-    abstract fun rotateLeft(): MarsRover
-
-    override fun toString() = "${x}:${y}:${direction}"
+class MarsRover(val grid: Grid, private var rover: Rover) {
+    fun execute(commands: String): String {
+        for (command in commands) {
+            rover = createCommand(command, rover).execute()
+        }
+        return rover.toString()
+    }
 }

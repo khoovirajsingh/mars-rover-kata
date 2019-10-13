@@ -2,10 +2,11 @@ import org.amshove.kluent.`should be equal to`
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.CsvSource
+import rover.*
 
-class MarsRoverCommandShould {
+class RoverCommandShould {
     private lateinit var grid: Grid
-    private lateinit var marsRoverCommand: MarsRoverCommand
+    private lateinit var marsRover: MarsRover
 
     @BeforeEach
     fun setUp() {
@@ -27,9 +28,9 @@ class MarsRoverCommandShould {
         "0, 0, W, M, '9:0:W'"
     )
     fun move(x: Int, y: Int, direction: String, command: String, expectedPosition: String) {
-        marsRoverCommand = MarsRoverCommand(grid, createMarsRover(x, y, direction))
+        marsRover = MarsRover(grid, createMarsRover(x, y, direction))
 
-        val actualPosition = marsRoverCommand.execute(command)
+        val actualPosition = marsRover.execute(command)
 
         actualPosition `should be equal to` expectedPosition
     }
@@ -47,14 +48,14 @@ class MarsRoverCommandShould {
         "0, 0, N, MRMLMM, '1:3:N'"
     )
     fun rotate(x: Int, y: Int, direction: String, command: String, expectedPosition: String) {
-        marsRoverCommand = MarsRoverCommand(grid, createMarsRover(x, y, direction))
+        marsRover = MarsRover(grid, createMarsRover(x, y, direction))
 
-        val actualPosition = marsRoverCommand.execute(command)
+        val actualPosition = marsRover.execute(command)
 
         actualPosition `should be equal to` expectedPosition
     }
 
-    private fun createMarsRover(x: Int, y: Int, direction: String): MarsRover {
+    private fun createMarsRover(x: Int, y: Int, direction: String): Rover {
         return when(direction) {
             "N" -> RoverFacingNorth(x, y, direction)
             "W" -> RoverFacingWest(x, y, direction)
