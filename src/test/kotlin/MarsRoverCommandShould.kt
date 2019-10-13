@@ -3,9 +3,9 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.CsvSource
 
-class MarsRoverShould {
+class MarsRoverCommandShould {
     private lateinit var grid: Grid
-    private lateinit var marsRover: MarsRover
+    private lateinit var marsRoverCommand: MarsRoverCommand
 
     @BeforeEach
     fun setUp() {
@@ -27,9 +27,9 @@ class MarsRoverShould {
         "0, 0, W, M, '9:0:W'"
     )
     fun move(x: Int, y: Int, direction: String, command: String, expectedPosition: String) {
-        marsRover = MarsRover(grid, Position(x, y, direction))
+        marsRoverCommand = MarsRoverCommand(grid, Rover(x, y, direction))
 
-        val actualPosition = marsRover.execute(command)
+        val actualPosition = marsRoverCommand.execute(command)
 
         actualPosition `should be equal to` expectedPosition
     }
@@ -47,9 +47,9 @@ class MarsRoverShould {
         "0, 0, N, MRMLMM, '1:3:N'"
     )
     fun rotate(x: Int, y: Int, direction: String, command: String, expectedPosition: String) {
-        marsRover = MarsRover(grid, Position(x, y, direction))
+        marsRoverCommand = MarsRoverCommand(grid, Rover(x, y, direction))
 
-        val actualPosition = marsRover.execute(command)
+        val actualPosition = marsRoverCommand.execute(command)
 
         actualPosition `should be equal to` expectedPosition
     }

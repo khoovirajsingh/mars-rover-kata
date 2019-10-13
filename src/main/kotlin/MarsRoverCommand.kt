@@ -2,15 +2,15 @@ private const val MOVE = 'M'
 private const val ROTATE_RIGHT = 'R'
 private const val ROTATE_LEFT = 'L'
 
-class MarsRover(val grid: Grid, private var position: Position) {
+class MarsRoverCommand(val grid: Grid, private var rover: Rover) {
 
     fun execute(commands: String): String {
         for (command in commands) {
-            if (isMove(command)) position = position.move()
-            if (isRotateRight(command)) position = position.rotateRight()
-            if (isRotateLeft(command)) position = position.rotateLeft()
+            if (isMove(command)) rover = rover.move()
+            if (isRotateRight(command)) rover = rover.rotateRight()
+            if (isRotateLeft(command)) rover = rover.rotateLeft()
         }
-        return position.toString()
+        return rover.toString()
     }
 
     private fun isMove(command: Char) = command == MOVE
